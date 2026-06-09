@@ -38,3 +38,23 @@ func tambahMenu(T *tabMenu, n *int) {
 	*n = *n + 1
 	fmt.Println("Menu berhasil ditambahkan.")
 }
+
+func tampilMenu(T tabMenu, n int) {
+	if n == 0 {
+		fmt.Println("Belum ada data menu.")
+		return
+	}
+	fmt.Println()
+	fmt.Printf("%-3s %-15s %-12s %-9s %-10s %s\n", "No", "Nama", "Kategori", "Harga", "Status", "Komposisi")
+	var i int
+	for i = 0; i < n; i++ {
+		var status string
+		if T[i].tersedia {
+			status = "Tersedia"
+		} else {
+			status = "Habis"
+		}
+		fmt.Printf("%-3d %-15s %-12s %-9d %-10s %s\n", i+1, T[i].nama, T[i].kategori, T[i].harga, status, T[i].komposisi)
+	}
+	fmt.Println()
+}
