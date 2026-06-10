@@ -58,3 +58,36 @@ func tampilMenu(T tabMenu, n int) {
 	}
 	fmt.Println()
 }
+
+func ubahMenu(T *tabMenu, n int) {
+	if n == 0 {
+		fmt.Println("Belum ada data menu.")
+		return
+	}
+	tampilMenu(*T, n)
+	var nomor int
+	fmt.Print("Pilih nomor menu yang ingin diubah: ")
+	fmt.Scan(&nomor)
+	if nomor < 1 || nomor > n {
+		fmt.Println("Nomor menu tidak valid.")
+		return
+	}
+	var idx int = nomor - 1
+	var s int
+	fmt.Print("Nama menu baru (tanpa spasi) : ")
+	fmt.Scan(&T[idx].nama)
+	fmt.Print("Kategori baru                : ")
+	fmt.Scan(&T[idx].kategori)
+	fmt.Print("Harga baru                   : ")
+	fmt.Scan(&T[idx].harga)
+	fmt.Print("Komposisi baru (tanpa spasi) : ")
+	fmt.Scan(&T[idx].komposisi)
+	fmt.Print("Status (1=Tersedia, 0=Habis) : ")
+	fmt.Scan(&s)
+	if s == 1 {
+		T[idx].tersedia = true
+	} else {
+		T[idx].tersedia = false
+	}
+	fmt.Println("Menu berhasil diubah.")
+}
