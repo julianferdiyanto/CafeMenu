@@ -157,3 +157,61 @@ func kelolaKategori() {
 		}
 	}
 }
+
+func cariMenu() {
+	var pilih int
+	var kategori string
+	fmt.Println("\n=== CARI MENU ===")
+	fmt.Println("1. Sequential Search")
+	fmt.Println("2. Binary Search")
+	fmt.Print("Pilih metode: ")
+	fmt.Scan(&pilih)
+	fmt.Print("Masukkan kategori : ")
+	fmt.Scan(&kategori)
+
+	if pilih == 1 {
+		var ketemu bool
+		fmt.Println("\n=== HASIL SEQUENTIAL SEARCH ===")
+		for i := 0; i < n; i++ {
+			if daftar[i].kategori == kategori {
+				fmt.Println("-", daftar[i].nama, "- Rp", daftar[i].harga)
+				ketemu = true
+			}
+		}
+		if !ketemu {
+			fmt.Println("Menu tidak ditemukan.")
+		}
+	} else if pilih == 2 {
+		var temp Menu
+		for i := 0; i < n-1; i++ {
+			for j := i + 1; j < n; j++ {
+				if daftar[i].kategori > daftar[j].kategori {
+					temp = daftar[i]
+					daftar[i] = daftar[j]
+					daftar[j] = temp
+				}
+			}
+		}
+		low := 0
+		high := n - 1
+		var ketemu bool
+		fmt.Println("\n=== HASIL BINARY SEARCH ===")
+		for low <= high {
+			mid := (low + high) / 2
+			if daftar[mid].kategori == kategori {
+				fmt.Println("-", daftar[mid].nama, "- Rp", daftar[mid].harga)
+				ketemu = true
+				break
+			} else if daftar[mid].kategori < kategori {
+				low = mid + 1
+			} else {
+				high = mid - 1
+			}
+		}
+		if !ketemu {
+			fmt.Println("Menu tidak ditemukan.")
+		}
+	} else {
+		fmt.Println("Metode tidak tersedia.")
+	}
+}
