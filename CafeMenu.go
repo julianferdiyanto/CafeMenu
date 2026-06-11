@@ -291,9 +291,9 @@ func main() {
 	for {
 		fmt.Println("\n=== MENU UTAMA ===")
 		fmt.Println("1. Tambah menu")
-		fmt.Println("2. Tampilkan menu")
-		fmt.Println("3. Ubah menu")
-		fmt.Println("4. Hapus menu")
+		fmt.Println("2. Ubah menu")
+		fmt.Println("3. Hapus menu")
+		fmt.Println("4. Tampilkan menu")
 		fmt.Println("5. Kelola kategori")
 		fmt.Println("6. Cari menu")
 		fmt.Println("7. Urutkan menu")
@@ -304,11 +304,11 @@ func main() {
 		if pilih == 1 {
 			tambahMenu()
 		} else if pilih == 2 {
-			tampilMenu()
-		} else if pilih == 3 {
 			ubahMenu()
-		} else if pilih == 4 {
+		} else if pilih == 3 {
 			hapusMenu()
+		} else if pilih == 4 {
+			tampilMenu()
 		} else if pilih == 5 {
 			kelolaKategori()
 		} else if pilih == 6 {
