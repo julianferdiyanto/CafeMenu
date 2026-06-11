@@ -215,3 +215,46 @@ func cariMenu() {
 		fmt.Println("Metode tidak tersedia.")
 	}
 }
+
+func urutkanMenu() {
+	var pilih int
+	fmt.Println("\n=== URUTKAN MENU ===")
+	fmt.Println("1. Selection Sort")
+	fmt.Println("2. Insertion Sort")
+	fmt.Print("Pilih metode: ")
+	fmt.Scan(&pilih)
+
+	if pilih == 1 {
+		var min int
+		var temp Menu
+		for i := 0; i < n-1; i++ {
+			min = i
+			for j := i + 1; j < n; j++ {
+				if daftar[j].harga < daftar[min].harga {
+					min = j
+				}
+			}
+			temp = daftar[i]
+			daftar[i] = daftar[min]
+			daftar[min] = temp
+		}
+		fmt.Println("Data diurutkan dengan Selection Sort.")
+		tampilMenu()
+	} else if pilih == 2 {
+		var temp Menu
+		var j int
+		for i := 1; i < n; i++ {
+			temp = daftar[i]
+			j = i - 1
+			for j >= 0 && daftar[j].harga > temp.harga {
+				daftar[j+1] = daftar[j]
+				j--
+			}
+			daftar[j+1] = temp
+		}
+		fmt.Println("Data diurutkan dengan Insertion Sort.")
+		tampilMenu()
+	} else {
+		fmt.Println("Metode tidak tersedia.")
+	}
+}
