@@ -3,7 +3,6 @@ import "fmt"
 
 const NMAX = 100
 const KMAX = 50
-
 type Menu struct {
 	id        int
 	nama      string
@@ -12,7 +11,6 @@ type Menu struct {
 	komposisi string
 	tersedia  bool
 }
-
 var daftar [NMAX]Menu
 var n int
 var daftarKategori [KMAX]string
@@ -65,35 +63,25 @@ func tampilMenu() {
 	}
 }
 
-func ubahMenu(T *tabMenu, n int) {
-	if n == 0 {
-		fmt.Println("Belum ada data menu.")
-		return
+func ubahMenu() {
+	var id int
+	fmt.Print("Masukkan ID menu yang diubah : ")
+	fmt.Scan(&id)
+	for i := 0; i < n; i++ {
+		if daftar[i].id == id {
+			fmt.Print("Nama baru            : ")
+			fmt.Scan(&daftar[i].nama)
+			fmt.Print("Kategori baru        : ")
+			fmt.Scan(&daftar[i].kategori)
+			fmt.Print("Harga baru           : ")
+			fmt.Scan(&daftar[i].harga)
+			fmt.Print("Komposisi baru       : ")
+			fmt.Scan(&daftar[i].komposisi)
+			fmt.Print("Tersedia (true/false): ")
+			fmt.Scan(&daftar[i].tersedia)
+			fmt.Println("Data berhasil diubah!")
+			return
+		}
 	}
-	tampilMenu(*T, n)
-	var nomor int
-	fmt.Print("Pilih nomor menu yang ingin diubah: ")
-	fmt.Scan(&nomor)
-	if nomor < 1 || nomor > n {
-		fmt.Println("Nomor menu tidak valid.")
-		return
-	}
-	var idx int = nomor - 1
-	var s int
-	fmt.Print("Nama menu baru (tanpa spasi) : ")
-	fmt.Scan(&T[idx].nama)
-	fmt.Print("Kategori baru                : ")
-	fmt.Scan(&T[idx].kategori)
-	fmt.Print("Harga baru                   : ")
-	fmt.Scan(&T[idx].harga)
-	fmt.Print("Komposisi baru (tanpa spasi) : ")
-	fmt.Scan(&T[idx].komposisi)
-	fmt.Print("Status (1=Tersedia, 0=Habis) : ")
-	fmt.Scan(&s)
-	if s == 1 {
-		T[idx].tersedia = true
-	} else {
-		T[idx].tersedia = false
-	}
-	fmt.Println("Menu berhasil diubah.")
+	fmt.Println("Data tidak ditemukan.")
 }
