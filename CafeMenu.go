@@ -1,8 +1,10 @@
 package main
+
 import "fmt"
 
 const NMAX = 100
 const KMAX = 50
+
 type Menu struct {
 	id        int
 	nama      string
@@ -11,10 +13,23 @@ type Menu struct {
 	komposisi string
 	tersedia  bool
 }
+
 var daftar [NMAX]Menu
 var n int
 var daftarKategori [KMAX]string
 var nk int
+
+func isiDataAwal() {
+	daftar[0] = Menu{1, "Americano", "coffee", 18000, "kopi", true}
+	daftar[1] = Menu{2, "Latte", "coffee", 25000, "kopi_susu", true}
+	daftar[2] = Menu{3, "Cappuccino", "coffee", 28000, "kopi_susu", true}
+	daftar[3] = Menu{4, "Matcha", "non-coffee", 22000, "bubuk_matcha", true}
+	daftar[4] = Menu{5, "LemonTea", "non-coffee", 12000, "teh_lemon", true}
+	n = 5
+	daftarKategori[0] = "coffee"
+	daftarKategori[1] = "non-coffee"
+	nk = 2
+}
 
 func tambahMenu(T *tabMenu, n *int) {
 	if *n >= NMAX {
