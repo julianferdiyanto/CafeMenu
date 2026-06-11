@@ -85,3 +85,20 @@ func ubahMenu() {
 	}
 	fmt.Println("Data tidak ditemukan.")
 }
+
+func hapusMenu() {
+	var id int
+	fmt.Print("Masukkan ID menu yang dihapus : ")
+	fmt.Scan(&id)
+	for i := 0; i < n; i++ {
+		if daftar[i].id == id {
+			for j := i; j < n-1; j++ {
+				daftar[j] = daftar[j+1]
+			}
+			n--
+			fmt.Println("Menu berhasil dihapus!")
+			return
+		}
+	}
+	fmt.Println("Data tidak ditemukan.")
+}
