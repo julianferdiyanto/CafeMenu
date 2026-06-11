@@ -1,5 +1,4 @@
 package main
-
 import "fmt"
 
 const NMAX = 100
@@ -49,24 +48,21 @@ func tambahMenu() {
 	fmt.Println("Menu berhasil ditambahkan!")
 }
 
-func tampilMenu(T tabMenu, n int) {
+func tampilMenu() {
+	fmt.Println("\n=== DAFTAR MENU ===")
 	if n == 0 {
 		fmt.Println("Belum ada data menu.")
 		return
 	}
-	fmt.Println()
-	fmt.Printf("%-3s %-15s %-12s %-9s %-10s %s\n", "No", "Nama", "Kategori", "Harga", "Status", "Komposisi")
-	var i int
-	for i = 0; i < n; i++ {
-		var status string
-		if T[i].tersedia {
-			status = "Tersedia"
-		} else {
-			status = "Habis"
-		}
-		fmt.Printf("%-3d %-15s %-12s %-9d %-10s %s\n", i+1, T[i].nama, T[i].kategori, T[i].harga, status, T[i].komposisi)
+	for i := 0; i < n; i++ {
+		fmt.Println("----------------------------")
+		fmt.Println("ID        :", daftar[i].id)
+		fmt.Println("Nama      :", daftar[i].nama)
+		fmt.Println("Kategori  :", daftar[i].kategori)
+		fmt.Println("Harga     :", daftar[i].harga)
+		fmt.Println("Komposisi :", daftar[i].komposisi)
+		fmt.Println("Tersedia  :", daftar[i].tersedia)
 	}
-	fmt.Println()
 }
 
 func ubahMenu(T *tabMenu, n int) {
