@@ -102,3 +102,58 @@ func hapusMenu() {
 	}
 	fmt.Println("Data tidak ditemukan.")
 }
+
+func kelolaKategori() {
+	var pilih int
+	for {
+		fmt.Println("\n=== KELOLA KATEGORI ===")
+		fmt.Println("1. Tambah kategori")
+		fmt.Println("2. Ubah kategori")
+		fmt.Println("3. Hapus kategori")
+		fmt.Println("4. Tampilkan kategori")
+		fmt.Println("0. Kembali")
+		fmt.Print("Pilih: ")
+		fmt.Scan(&pilih)
+
+		if pilih == 1 {
+			fmt.Print("Nama kategori baru : ")
+			fmt.Scan(&daftarKategori[nk])
+			nk++
+			fmt.Println("Kategori berhasil ditambahkan!")
+		} else if pilih == 2 {
+			var lama string
+			fmt.Print("Kategori yang diubah : ")
+			fmt.Scan(&lama)
+			for k := 0; k < nk; k++ {
+				if daftarKategori[k] == lama {
+					fmt.Print("Nama baru : ")
+					fmt.Scan(&daftarKategori[k])
+					fmt.Println("Kategori berhasil diubah!")
+				}
+			}
+		} else if pilih == 3 {
+			var nama string
+			fmt.Print("Kategori yang dihapus : ")
+			fmt.Scan(&nama)
+			for k := 0; k < nk; k++ {
+				if daftarKategori[k] == nama {
+					for j := k; j < nk-1; j++ {
+						daftarKategori[j] = daftarKategori[j+1]
+					}
+					nk--
+					fmt.Println("Kategori berhasil dihapus!")
+					break
+				}
+			}
+		} else if pilih == 4 {
+			fmt.Println("\n=== DAFTAR KATEGORI ===")
+			for k := 0; k < nk; k++ {
+				fmt.Printf("%d. %s\n", k+1, daftarKategori[k])
+			}
+		} else if pilih == 0 {
+			return
+		} else {
+			fmt.Println("Pilihan tidak tersedia.")
+		}
+	}
+}
