@@ -1,23 +1,27 @@
 package main
 import "fmt"
 
-const NMAX int = 100
-type menu struct {
+const NMAX = 100
+const KMAX = 50
+type Menu struct {
+	id        int
 	nama      string
 	kategori  string
 	harga     int
 	komposisi string
 	tersedia  bool
 }
-type tabMenu [NMAX]menu
-type tabKategori [NMAX]string
+var daftar [NMAX]Menu
+var n int
+var daftarKategori [KMAX]string
+var nk int
 
 func tambahMenu(T *tabMenu, n *int) {
 	if *n >= NMAX {
 		fmt.Println("Data menu sudah penuh.")
 		return
 	}
-	var baru menu
+	var baru Menu
 	var s int
 	fmt.Print("Nama menu (tanpa spasi)      : ")
 	fmt.Scan(&baru.nama)
