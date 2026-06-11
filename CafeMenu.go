@@ -258,3 +258,29 @@ func urutkanMenu() {
 		fmt.Println("Metode tidak tersedia.")
 	}
 }
+
+func statistik() {
+	fmt.Println("\n+++  AsharCafe  +++")
+	if n == 0 {
+		fmt.Println("Belum ada data menu.")
+		fmt.Println("+++++++++++++++++++")
+		return
+	}
+	fmt.Println("Jumlah menu per kategori:")
+	for k := 0; k < nk; k++ {
+		jumlah := 0
+		for i := 0; i < n; i++ {
+			if daftar[i].kategori == daftarKategori[k] {
+				jumlah++
+			}
+		}
+		fmt.Println("-", daftarKategori[k], ":", jumlah, "menu")
+	}
+	total := 0
+	for i := 0; i < n; i++ {
+		total += daftar[i].harga
+	}
+	fmt.Println("Total semua menu     :", n, "menu")
+	fmt.Println("Rata-rata harga menu : Rp", total/n)
+	fmt.Println("+++++++++++++++++++")
+}
