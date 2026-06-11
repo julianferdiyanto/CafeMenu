@@ -31,31 +31,22 @@ func isiDataAwal() {
 	nk = 2
 }
 
-func tambahMenu(T *tabMenu, n *int) {
-	if *n >= NMAX {
-		fmt.Println("Data menu sudah penuh.")
-		return
-	}
-	var baru Menu
-	var s int
-	fmt.Print("Nama menu (tanpa spasi)      : ")
-	fmt.Scan(&baru.nama)
-	fmt.Print("Kategori (mis. coffee)       : ")
-	fmt.Scan(&baru.kategori)
-	fmt.Print("Harga                        : ")
-	fmt.Scan(&baru.harga)
-	fmt.Print("Komposisi (tanpa spasi)      : ")
-	fmt.Scan(&baru.komposisi)
-	fmt.Print("Status (1 = Tersedia, 0 = Habis) : ")
-	fmt.Scan(&s)
-	if s == 1 {
-		baru.tersedia = true
-	} else {
-		baru.tersedia = false
-	}
-	T[*n] = baru
-	*n = *n + 1
-	fmt.Println("Menu berhasil ditambahkan.")
+func tambahMenu() {
+	fmt.Println("\n=== TAMBAH MENU ===")
+	fmt.Print("ID                   : ")
+	fmt.Scan(&daftar[n].id)
+	fmt.Print("Nama Menu            : ")
+	fmt.Scan(&daftar[n].nama)
+	fmt.Print("Kategori             : ")
+	fmt.Scan(&daftar[n].kategori)
+	fmt.Print("Harga                : ")
+	fmt.Scan(&daftar[n].harga)
+	fmt.Print("Komposisi            : ")
+	fmt.Scan(&daftar[n].komposisi)
+	fmt.Print("Tersedia (true/false): ")
+	fmt.Scan(&daftar[n].tersedia)
+	n++
+	fmt.Println("Menu berhasil ditambahkan!")
 }
 
 func tampilMenu(T tabMenu, n int) {
